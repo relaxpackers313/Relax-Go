@@ -1,0 +1,30 @@
+{
+  "name": "@relaxgo/admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3100",
+    "build": "next build",
+    "start": "next start -p 3100",
+    "typecheck": "tsc --noEmit",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@relaxgo/shared": "workspace:*",
+    "@tanstack/react-query": "^5.102.8",
+    "maplibre-gl": "^5.6.0",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "socket.io-client": "^4.8.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.16",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.8",
+    "tailwindcss": "^4.1.16",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "relaxgo",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev:api": "pnpm --filter @relaxgo/api dev",
+    "dev:admin": "pnpm --filter @relaxgo/admin dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "mongodb-memory-server",
+      "protobufjs",
+      "@firebase/util"
+    ]
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
+}

@@ -1,0 +1,68 @@
+# Render blueprint for the Relax Go API (Express + Socket.IO, pnpm monorepo).
+# Create the service from this file: Render → New → Blueprint → pick this repo.
+# Secrets are NOT stored here — set every `sync: false` value in the Render dashboard.
+services:
+  - type: web
+    name: relaxgo-api
+    runtime: node
+    region: singapore # closest Render region to India
+    plan: starter # free instances sleep after 15 min; live GPS needs an always-on service
+    branch: main
+    healthCheckPath: /health
+    # --prod=false keeps the build tools (tsup/typescript) even though NODE_ENV=production.
+    buildCommand: >-
+      corepack enable &&
+      pnpm install --frozen-lockfile --prod=false &&
+      pnpm --filter @relaxgo/shared build &&
+      pnpm --filter @relaxgo/api build
+    startCommand: node apps/api/dist/server.js
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_BASE_PATH
+        value: /api/v1
+      - key: COOKIE_SECURE
+        value: 'true'
+      # Skip the mongodb-memory-server binary download (test-only dependency).
+      - key: MONGOMS_DISABLE_POSTINSTALL
+        value: '1'
+      - key: PNPM_VERSION
+        value: 10.33.0
+      # --- set these in the dashboard (never commit them) ---
+      - key: MONGODB_URI
+        sync: false
+      - key: DNS_SERVERS
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        sync: false
+      - key: ADMIN_ORIGIN # comma-separated; e.g. https://relaxgo-admin.vercel.app
+        sync: false
+      - key: VERCEL_PROJECT_NAME # optional: allows that project's preview deploys
+        sync: false
+      - key: ADMIN_BOOTSTRAP_EMAIL
+        sync: false
+      - key: ADMIN_BOOTSTRAP_PASSWORD
+        sync: false
+      - key: GOOGLE_MAPS_API_KEY
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: BREVO_API_KEY
+        sync: false
+      - key: EMAIL_FROM_NAME
+        value: Relax Go
+      - key: EMAIL_FROM_ADDRESS
+        sync: false
+      - key: FIREBASE_SERVICE_ACCOUNT_BASE64
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: RAZORPAY_WEBHOOK_SECRET
+        sync: false

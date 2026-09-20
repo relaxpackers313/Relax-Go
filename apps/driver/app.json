@@ -1,0 +1,80 @@
+{
+  "expo": {
+    "name": "Relax Go Driver",
+    "slug": "relaxgo-driver",
+    "version": "1.0.0",
+    "scheme": "relaxgodriver",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "icon": "./assets/icon.png",
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "splash": {
+      "image": "./assets/splash-logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "android": {
+      "package": "in.relaxgroup.relaxgo.driver",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_LOCATION",
+        "CALL_PHONE",
+        "CAMERA"
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "in.relaxgroup.relaxgo.driver",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location"
+        ],
+        "NSLocationWhenInUseUsageDescription": "Your live location lets nearby customers find you while you are online.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "While you are ONLINE, Relax Go keeps sharing your location in the background so customers can find you and track their pickup. Going offline stops all sharing.",
+        "NSCameraUsageDescription": "Take photos of your documents during registration."
+      }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ],
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Your live location lets nearby customers find you while you are online.",
+          "locationAlwaysAndWhenInUsePermission": "While you are ONLINE, Relax Go shares your location in the background so customers can find you. Going offline stops all sharing.",
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Take photos of your documents during registration."
+        }
+      ]
+    ],
+    "extra": {
+      "apiUrl": "http://localhost:4100/api/v1",
+      "socketUrl": "http://localhost:4100"
+    }
+  }
+}

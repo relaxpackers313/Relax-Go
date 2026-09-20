@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+@import 'maplibre-gl/dist/maplibre-gl.css';
+
+@theme {
+  /* Relax Go admin palette: calm slate console with a teal action color and saffron accent. */
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-500: #0d9488;
+  --color-brand-600: #0f766e;
+  --color-brand-700: #115e59;
+  --color-accent-500: #f59e0b;
+  --color-ink-950: #0b1220;
+  --color-ink-900: #111a2c;
+  --color-ink-800: #1b2739;
+
+  --radius-card: 0.75rem;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: #f4f6f9;
+  color: #0f172a;
+  font-feature-settings: 'tnum';
+}

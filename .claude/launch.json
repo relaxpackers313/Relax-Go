@@ -1,0 +1,33 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "api",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "@relaxgo/api",
+        "dev"
+      ],
+      "port": 4100
+    },
+    {
+      "name": "admin",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "@relaxgo/admin",
+        "dev"
+      ],
+      "port": 3100
+    },
+    {
+      "name": "dev-mongo",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "apps/api/scripts/dev-mongo.mjs"
+      ],
+      "port": 4199
+    }
+  ]
+}
